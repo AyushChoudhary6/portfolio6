@@ -105,7 +105,7 @@ const Projects = () => {
         "Infrastructure as Code: All AWS resources defined using Terraform",
         "CI/CD: Automated build and deployment pipelines with GitHub Actions"
       ]
-    },
+    }
     // {
     //   id: 3,
     //   title: "Scriptify",
