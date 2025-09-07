@@ -121,7 +121,7 @@ const Hero = () => {
             style={{ opacity }}
           >
             <p className="text-gray-400 text-xl md:text-2xl mt-8 font-light tracking-[0.2em] uppercase">
-              DevOps Engineer & Cloud Architect
+              {/* DevOps Engineer & Cloud Architect */}
             </p>
           </motion.div>
 
