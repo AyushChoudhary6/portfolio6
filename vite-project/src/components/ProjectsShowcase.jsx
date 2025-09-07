@@ -46,22 +46,6 @@ const Projects = () => {
   return (
     <section ref={containerRef} className="bg-black text-white py-24" id="projects">
       <div className="max-w-7xl mx-auto px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-24"
-        >
-          <h2 className="ultra-bold-heading text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] text-white mb-8">
-            FEATURED WORK
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Cinematic showcase of infrastructure solutions and DevOps innovations
-          </p>
-        </motion.div>
-
         {/* Projects Grid */}
         <div className="space-y-32">
           {projects.map((project, index) => (
