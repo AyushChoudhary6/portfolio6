@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,12 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+
+  // EmailJS configuration
+  const EMAILJS_SERVICE_ID = 'service_ajrmhub';
+  const EMAILJS_TEMPLATE_ID = 'template_vznwymt';
+  const EMAILJS_PUBLIC_KEY = 'FijYBsuLGlEcDn0Q6';
 
   const handleChange = (e) => {
     setFormData({
@@ -20,14 +27,32 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('');
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Ayush Choudhary', // Your name
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', result);
       setFormData({ name: '', email: '', message: '' });
+      setSubmitStatus('success');
+      
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      alert('Thank you for your message! I\'ll get back to you soon.');
-    }, 1000);
+    }
   };
 
   const fadeInUp = {
@@ -197,6 +222,24 @@ const Contact = () => {
                       >
                         {isSubmitting ? 'Sending...' : 'Send Message'}
                       </motion.button>
+
+                      {/* Status Message */}
+                      {submitStatus && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className={`text-center mt-4 ${
+                            submitStatus === 'success' 
+                              ? 'text-green-400' 
+                              : 'text-red-400'
+                          }`}
+                        >
+                          {submitStatus === 'success' 
+                            ? 'Thank you for your message! I\'ll get back to you soon.' 
+                            : 'Failed to send message. Please try again or contact me directly.'
+                          }
+                        </motion.div>
+                      )}
                     </form>
                   </div>
                 </div>
