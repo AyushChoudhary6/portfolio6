@@ -111,11 +111,11 @@ const Contact = () => {
                       <div className="space-y-6">
                         <motion.a 
                           href="mailto:ayush.choudhary@example.com" 
-                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-blue-400 transition-colors text-lg group"
+                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <FaEnvelope className="text-blue-400 group-hover:text-white transition-colors" />
+                          <FaEnvelope className="text-white group-hover:text-gray-300 transition-colors" />
                           <span>ayush.choudhary@example.com</span>
                         </motion.a>
                         
@@ -123,11 +123,11 @@ const Contact = () => {
                           href="https://linkedin.com/in/ayushchoudhary" 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-blue-400 transition-colors text-lg group"
+                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <FaLinkedin className="text-blue-400 group-hover:text-white transition-colors" />
+                          <FaLinkedin className="text-white group-hover:text-gray-300 transition-colors" />
                           <span>LinkedIn</span>
                         </motion.a>
                         
@@ -135,11 +135,11 @@ const Contact = () => {
                           href="https://github.com/ayushchoudhary" 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-blue-400 transition-colors text-lg group"
+                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <FaGithub className="text-blue-400 group-hover:text-white transition-colors" />
+                          <FaGithub className="text-white group-hover:text-gray-300 transition-colors" />
                           <span>GitHub</span>
                         </motion.a>
                       </div>
@@ -158,7 +158,7 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="Your Name"
-                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors text-lg"
+                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors text-lg"
                         />
                       </div>
 
@@ -171,7 +171,7 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="Your Email"
-                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors text-lg"
+                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors text-lg"
                         />
                       </div>
 
@@ -184,14 +184,14 @@ const Contact = () => {
                           required
                           rows={4}
                           placeholder="Your Message"
-                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors resize-none text-lg"
+                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors resize-none text-lg"
                         ></textarea>
                       </div>
 
                       <motion.button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full mt-8 px-8 py-4 border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black transition-all duration-300 text-lg font-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full mt-8 px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-lg font-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                         whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                       >
