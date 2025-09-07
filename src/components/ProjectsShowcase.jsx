@@ -49,8 +49,8 @@ const Projects = () => {
       thumbnail: "/chat-app.png",
       images: [
         "/chat-app.png",
-        "/chat-app.png",
-        "/chat-app.png"
+        // "/chat-app.png",
+        // "/chat-app.png"
       ],
       features: [
         "CI/CD Pipeline: Automated builds, testing, and deployments using Jenkins & GitHub Actions.",
