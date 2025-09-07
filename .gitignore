@@ -1,7 +1,27 @@
-# Chrome installer files
-*.deb
-*.deb.*
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Other unnecessary files
-*.zip
-*.png
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment variables
+.env
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
