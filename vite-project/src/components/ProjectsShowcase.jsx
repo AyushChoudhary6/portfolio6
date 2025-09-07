@@ -6,6 +6,7 @@ const Projects = () => {
   const containerRef = useRef(null);
   const [expandedProject, setExpandedProject] = useState(null);
   const [buttonPosition, setButtonPosition] = useState(null);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
   const [modalVariants, setModalVariants] = useState(() => ({
     initial: {
       width: 120,
@@ -35,32 +36,32 @@ const Projects = () => {
   });
 
   const projects = [
+    // {
+    //   id: 1,
+    //   title: "Chat-app",
+    //   // description: "A real-time chat application built with React and Firebase.",
+    //   detailedDescription: "Built a production-ready fullstack chat application with a strong DevOps foundation — leveraging Docker for containerization, Jenkins pipelines for automated build/test/deployment, and Kubernetes for scalable orchestration. Infrastructure was provisioned using Terraform, secured with AWS IAM, and monitored through CloudWatch and Prometheus, ensuring a reliable, scalable, and secure deployment pipeline.",
+    //   tech: ["React", "Firebase", "Tailwind","AWS","Docker","Kubernetes","Terraform"],
+    //   category: "DevOps",
+    //   color: "from-blue-600 to-purple-600",
+    //   githubUrl: "https://github.com/AyushChoudhary6/full-stack_chatApp.git",
+    //   liveUrl: "https://full-stack-chat-app-xi.vercel.app/",
+    //   thumbnail: "/chat-app.png",
+    //   images: [
+    //     "/chat-app.png",
+    //     "/chat-app.png",
+    //     "/chat-app.png"
+    //   ],
+    //   features: [
+    //     "CI/CD Pipeline: Automated builds, testing, and deployments using Jenkins & GitHub Actions.",
+    //     "Containerization & Orchestration: Dockerized services and deployed on Kubernetes for scalability.",
+    //     "Infrastructure as Code: Provisioned cloud resources with Terraform, ensuring reproducible environments.",
+    //     "Cloud & Monitoring: Deployed on AWS with CloudWatch & Prometheus for performance monitoring.",
+    //     "Security: Enforced role-based access via AWS IAM and implemented best practices in secrets management"
+    //   ]
+    // },
     {
       id: 1,
-      title: "Chat-app",
-      // description: "A real-time chat application built with React and Firebase.",
-      detailedDescription: "Built a production-ready fullstack chat application with a strong DevOps foundation — leveraging Docker for containerization, Jenkins pipelines for automated build/test/deployment, and Kubernetes for scalable orchestration. Infrastructure was provisioned using Terraform, secured with AWS IAM, and monitored through CloudWatch and Prometheus, ensuring a reliable, scalable, and secure deployment pipeline.",
-      tech: ["React", "Firebase", "Tailwind","AWS","Docker","Kubernetes","Terraform"],
-      category: "DevOps",
-      color: "from-blue-600 to-purple-600",
-      githubUrl: "https://github.com/AyushChoudhary6/full-stack_chatApp.git",
-      liveUrl: "https://full-stack-chat-app-xi.vercel.app/",
-      thumbnail: "/chat-app.png",
-      images: [
-        "/chat-app.png",
-        "/chat-app.png",
-        "/chat-app.png"
-      ],
-      features: [
-        "CI/CD Pipeline: Automated builds, testing, and deployments using Jenkins & GitHub Actions.",
-        "Containerization & Orchestration: Dockerized services and deployed on Kubernetes for scalability.",
-        "Infrastructure as Code: Provisioned cloud resources with Terraform, ensuring reproducible environments.",
-        "Cloud & Monitoring: Deployed on AWS with CloudWatch & Prometheus for performance monitoring.",
-        "Security: Enforced role-based access via AWS IAM and implemented best practices in secrets management"
-      ]
-    },
-    {
-      id: 2,
       title: "Code Veda",
       detailedDescription: "Collaborated in a team to design and develop Code Veda, a hackathon website featuring a ancient & modern, responsive UI and seamless user experience. Focused on frontend development using React, TailwindCSS, and component-driven design to deliver an engaging platform within strict hackathon timelines.",
       category: "Frontend",
@@ -83,7 +84,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 3,
+      id: 2,
       title: "Retail Store App",
       detailedDescription: "The Retail Store Sample App demonstrates a modern microservices architecture deployed on AWS EKS using GitOps principles. The application consists of multiple services that work together to provide a complete retail store experience",
       tech: ["GitLab CI", "Docker", "SonarQube", "Vault", "Ansible"],
@@ -106,14 +107,13 @@ const Projects = () => {
       ]
     },
     {
-      id: 4,
-      title: "Microservices Architecture",
-      description: "Designed and implemented scalable microservices architecture with service mesh, distributed tracing, and comprehensive observability.",
-      detailedDescription: "A production-ready microservices architecture implementing domain-driven design principles with complete observability and resilience patterns. The system uses Istio service mesh for traffic management, Jaeger for distributed tracing, and implements circuit breakers, retries, and bulkhead patterns. The architecture supports auto-scaling, canary deployments, and comprehensive health checking.",
-      tech: ["Docker", "Kubernetes", "Istio", "Jaeger", "Prometheus"],
-      category: "Architecture",
+      id: 3,
+      title: "Scriptify",
+      detailedDescription: "Scriptify is a modern web application that generates detailed, structured summaries from YouTube videos using cutting-edge AI technology. Built with a robust DevOps pipeline featuring Docker containerization and Kubernetes orchestration.",
+      tech: ["Docker", "Kubernetes","AWS", "Terraform"],
+      category: "DevOps",
       color: "from-purple-600 to-pink-600",
-      githubUrl: "https://github.com/yourusername/microservices-architecture",
+      githubUrl: "https://github.com/AyushChoudhary6/CareerVault.git",
       liveUrl: "https://your-microservices-demo.com",
       thumbnail: "/api/placeholder/800/600",
       images: [
@@ -139,6 +139,7 @@ const Projects = () => {
       x: rect.left + rect.width / 2,
       y: rect.top + rect.height / 2
     });
+    setSavedScrollPosition(window.scrollY); // Save current scroll position
     setExpandedProject(project);
   }, []);
 
@@ -174,86 +175,65 @@ const Projects = () => {
     setExpandedProject(null);
   }, [expandedProject, buttonPosition, getExitPosition]);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll when modal is open - Fixed scroll restoration
   useEffect(() => {
     if (expandedProject) {
       const body = document.body;
       const html = document.documentElement;
       
-      // Store original styles
-      const originalBodyOverflow = body.style.overflow;
-      const originalHtmlOverflow = html.style.overflow;
-      const originalBodyPosition = body.style.position;
-      const originalBodyTop = body.style.top;
-      const originalBodyLeft = body.style.left;
-      const originalBodyRight = body.style.right;
-      const originalBodyWidth = body.style.width;
+      // Store original values
+      const originalOverflow = body.style.overflow;
+      const originalPosition = body.style.position;
+      const originalTop = body.style.top;
+      const originalWidth = body.style.width;
+      const originalScrollBehavior = html.style.scrollBehavior;
       
-      // Calculate scrollbar width to prevent layout shift
-      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      // Disable smooth scrolling to prevent animation
+      html.style.scrollBehavior = 'auto';
       
-      // Simply hide overflow without changing position
+      // Lock scroll with simple method
       body.style.overflow = 'hidden';
-      html.style.overflow = 'hidden';
-      body.style.paddingRight = `${scrollBarWidth}px`;
-      
-      // Prevent scroll events
-      const preventScroll = (e) => {
-        // Allow scrolling within the modal content
-        const target = e.target;
-        const modalContent = target.closest('.modal-scroll-area');
-        if (!modalContent) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-      };
-      
-      // Add event listeners with passive: false to allow preventDefault
-      document.addEventListener('wheel', preventScroll, { passive: false, capture: true });
-      document.addEventListener('touchmove', preventScroll, { passive: false, capture: true });
-      document.addEventListener('keydown', (e) => {
-        // Prevent arrow keys, page up/down, space, home, end
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'].includes(e.code)) {
-          const target = e.target;
-          const modalContent = target.closest('.modal-scroll-area');
-          if (!modalContent) {
-            e.preventDefault();
-          }
-        }
-      }, { passive: false, capture: true });
+      body.style.position = 'fixed';
+      body.style.top = `-${savedScrollPosition}px`;
+      body.style.width = '100%';
       
       // Cleanup function
       return () => {
-        // Remove all event listeners
-        document.removeEventListener('wheel', preventScroll, { capture: true });
-        document.removeEventListener('touchmove', preventScroll, { capture: true });
-        document.removeEventListener('keydown', preventScroll, { capture: true });
+        // Restore original styles first
+        body.style.overflow = originalOverflow;
+        body.style.position = originalPosition;
+        body.style.top = originalTop;
+        body.style.width = originalWidth;
         
-        // Restore original styles
-        body.style.overflow = originalBodyOverflow;
-        html.style.overflow = originalHtmlOverflow;
-        body.style.position = originalBodyPosition;
-        body.style.top = originalBodyTop;
-        body.style.left = originalBodyLeft;
-        body.style.right = originalBodyRight;
-        body.style.width = originalBodyWidth;
-        body.style.paddingRight = '';
+        // Restore scroll position instantly without animation
+        window.scrollTo({
+          top: savedScrollPosition,
+          left: 0,
+          behavior: 'auto' // Instant, no smooth scrolling
+        });
+        
+        // Restore original scroll behavior after a short delay
+        setTimeout(() => {
+          html.style.scrollBehavior = originalScrollBehavior;
+        }, 50);
       };
     }
-  }, [expandedProject]);
+  }, [expandedProject, savedScrollPosition]);
 
-  // Handle keyboard events
+  // Handle keyboard events - Only ESC key
   useEffect(() => {
     if (expandedProject) {
-      const handleEscape = (event) => {
+      const handleKeyDown = (event) => {
+        // Only handle ESC key, prevent other keys from interfering
         if (event.key === 'Escape') {
+          event.preventDefault();
+          event.stopPropagation();
           handleCloseModal();
         }
       };
 
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
     }
   }, [expandedProject, handleCloseModal]);
 
@@ -261,7 +241,7 @@ const Projects = () => {
     <section ref={containerRef} className="bg-black text-white py-24" id="projects">
       <div className="max-w-7xl mx-auto px-8">
         {/* Projects Grid */}
-        <div className="space-y-32">
+        <div className="space-y-48">
           {projects.map((project, index) => (
             <ProjectShowcase 
               key={project.id} 
@@ -292,13 +272,13 @@ const Projects = () => {
 const ProjectShowcase = ({ project, index, scrollProgress, onExpand }) => {
   const isEven = index % 2 === 0;
   
-  // Individual scroll transforms for each project
-  const yStart = index * 0.2;
-  const yEnd = yStart + 0.3;
+  // Individual scroll transforms for each project - Better spacing to avoid overlaps
+  const yStart = index * 0.25;  // Increased spacing between projects
+  const yEnd = yStart + 0.25;   // Reduced overlap range
   
-  const y = useTransform(scrollProgress, [yStart, yEnd], [100, -100]);
-  const opacity = useTransform(scrollProgress, [yStart, yStart + 0.1, yEnd - 0.1, yEnd], [0, 1, 1, 0]);
-  const scale = useTransform(scrollProgress, [yStart, yStart + 0.1, yEnd - 0.1, yEnd], [0.8, 1, 1, 0.8]);
+  const y = useTransform(scrollProgress, [yStart, yEnd], [50, -50]); // Reduced movement range
+  const opacity = useTransform(scrollProgress, [yStart, yStart + 0.05, yEnd - 0.05, yEnd], [0, 1, 1, 0]);
+  const scale = useTransform(scrollProgress, [yStart, yStart + 0.05, yEnd - 0.05, yEnd], [0.9, 1, 1, 0.9]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -333,7 +313,7 @@ const ProjectShowcase = ({ project, index, scrollProgress, onExpand }) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2, margin: "0px 0px -200px 0px" }}
     >
       {/* Project Visual */}
       <motion.div 
@@ -432,7 +412,12 @@ const ProjectDetailsModal = React.memo(({ project, buttonPosition, modalVariants
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        onClick={onClose}
+        onClick={(e) => {
+          // Only close if clicked directly on backdrop, not on children
+          if (e.target === e.currentTarget) {
+            onClose();
+          }
+        }}
       />
 
       {/* Expanding Container */}
@@ -447,7 +432,12 @@ const ProjectDetailsModal = React.memo(({ project, buttonPosition, modalVariants
         animate="animate"
         exit="exit"
         transition={transitionConfig}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
+        onMouseDown={(e) => e.stopPropagation()}
+        onTouchStart={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <motion.button
