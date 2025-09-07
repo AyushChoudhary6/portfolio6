@@ -433,8 +433,10 @@ const ProjectDetailsModal = React.memo(({ project, buttonPosition, modalVariants
         exit="exit"
         transition={transitionConfig}
         onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
+          // Only prevent default if not clicking on a link
+          if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+            e.stopPropagation();
+          }
         }}
         onMouseDown={(e) => e.stopPropagation()}
         onTouchStart={(e) => e.stopPropagation()}
