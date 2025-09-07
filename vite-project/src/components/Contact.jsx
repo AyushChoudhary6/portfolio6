@@ -12,10 +12,10 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
 
-  // EmailJS configuration
-  const EMAILJS_SERVICE_ID = 'service_ajrmhub';
-  const EMAILJS_TEMPLATE_ID = 'template_vznwymt';
-  const EMAILJS_PUBLIC_KEY = 'FijYBsuLGlEcDn0Q6';
+  // EmailJS configuration from environment variables
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   const handleChange = (e) => {
     setFormData({
@@ -28,6 +28,14 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
+    
+    // Check if environment variables are loaded
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS configuration missing');
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       // Send email using EmailJS
@@ -135,17 +143,17 @@ const Contact = () => {
                       {/* Contact Links */}
                       <div className="space-y-6">
                         <motion.a 
-                          href="mailto:ayush.choudhary@example.com" 
+                          href="mailto:ayushrjchoudhary2005@gmail.com" 
                           className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
                           <FaEnvelope className="text-white group-hover:text-gray-300 transition-colors" />
-                          <span>ayush.choudhary@example.com</span>
+                          <span>ayushrjchoudhary2005@gmail.com</span>
                         </motion.a>
                         
                         <motion.a 
-                          href="https://linkedin.com/in/ayushchoudhary" 
+                          href="https://www.linkedin.com/in/ayush-choudhary-29aa01325/" 
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
@@ -157,7 +165,7 @@ const Contact = () => {
                         </motion.a>
                         
                         <motion.a 
-                          href="https://github.com/ayushchoudhary" 
+                          href="https://github.com/AyushChoudhary6" 
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
