@@ -41,11 +41,11 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-black">
+    <section id="projects" className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Featured Projects</h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Here are some of the key projects I've worked on, showcasing my expertise in DevOps, 
             cloud infrastructure, and automation.
           </p>
@@ -55,26 +55,26 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:bg-gray-800 transition-all duration-300"
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="mb-4">
-                <span className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-sm font-medium rounded-full mb-3">
+                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full mb-3">
                   {project.category}
                 </span>
-                <h3 className="text-xl font-semibold text-white mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {project.description}
                 </p>
               </div>
               
-              <div className="pt-4 border-t border-gray-700">
+              <div className="pt-4 border-t border-gray-100">
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-2 py-1 bg-gray-800 text-gray-300 text-xs font-medium rounded"
+                      className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded"
                     >
                       {tech}
                     </span>
@@ -86,12 +86,12 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-300 mb-4">
+          <p className="text-gray-600 mb-4">
             Want to see more projects or discuss a collaboration?
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200"
+            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
           >
             Get In Touch
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

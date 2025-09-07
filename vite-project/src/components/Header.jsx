@@ -1,122 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Header = () => {
-  return (
-    <header className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-      <motion.nav 
-        className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-8 py-4 shadow-2xl shadow-gray-900/10 backdrop-saturate-180 relative"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ 
-          scale: 1, 
-          opacity: 1,
-          borderRadius: ["50px", "45px", "50px"],
-        }}
-        transition={{ 
-          duration: 1.2, 
-          ease: "easeOut",
-          borderRadius: {
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }
-        }}
-        whileHover={{
-          scale: 1.02,
-          y: -2,
-          borderRadius: "40px",
-          backgroundColor: "rgba(255, 255, 255, 0.25)",
-          transition: { 
-            duration: 0.4, 
-            ease: "easeOut" 
-          }
-        }}
-      >
-        <ul className="flex list-none gap-8 items-center relative z-10">
-          <motion.li
-            whileHover={{ 
-              scale: 1.05,
-              y: -2
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.a 
-              href="#about" 
-              className="text-gray-800 font-medium hover:text-gray-900 transition-all duration-300 py-2 px-3 rounded-full relative"
-              whileHover={{
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
-              }}
-            >
-              <span className="relative z-10">About Me</span>
-            </motion.a>
-          </motion.li>
-          
-          
-          
-          <motion.li
-            whileHover={{ 
-              scale: 1.05,
-              y: -2
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.a 
-              href="#skills" 
-              className="text-gray-800 font-medium hover:text-gray-900 transition-all duration-300 py-2 px-3 rounded-full relative"
-              whileHover={{
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
-              }}
-            >
-              <span className="relative z-10">Tech Stack</span>
-            </motion.a>
-          </motion.li>
-          
-          <motion.li
-            whileHover={{ 
-              scale: 1.05,
-              y: -2
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.a 
-              href="#projects" 
-              className="text-gray-800 font-medium hover:text-gray-900 transition-all duration-300 py-2 px-3 rounded-full relative"
-              whileHover={{
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
-              }}
-            >
-              <span className="relative z-10">Work</span>
-            </motion.a>
-          </motion.li>
+  const [isScrolled, setIsScrolled] = useState(false);
 
-          <motion.li
-            whileHover={{ 
-              scale: 1.05,
-              y: -2
-            }}
-            transition={{ duration: 0.3 }}
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { href: '#about', label: 'About' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' }
+  ];
+
+  return (
+    <motion.header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-black/95 backdrop-blur-sm' 
+          : 'bg-transparent'
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <nav className="max-w-6xl mx-auto px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <motion.a 
+            href="#hero"
+            className="text-2xl font-light text-white hover:text-gray-300 transition-colors"
+            whileHover={{ scale: 1.05 }}
           >
-            <motion.a 
-              href="#contact" 
-              className="text-gray-800 font-medium hover:text-gray-900 transition-all duration-300 py-2 px-3 rounded-full relative"
-              whileHover={{
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
-              }}
-            >
-              <span className="relative z-10">Get in touch</span>
-            </motion.a>
-          </motion.li>
-        </ul>
-      </motion.nav>
-    </header>
+            AC
+          </motion.a>
+
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center space-x-12">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-gray-400 hover:text-white font-light transition-colors duration-300 text-lg"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button className="p-2 text-gray-400 hover:text-white transition-colors">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </motion.header>
   );
 };
 
