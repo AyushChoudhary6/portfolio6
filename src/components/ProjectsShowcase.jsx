@@ -106,31 +106,31 @@ const Projects = () => {
         "CI/CD: Automated build and deployment pipelines with GitHub Actions"
       ]
     },
-    {
-      id: 3,
-      title: "Scriptify",
-      detailedDescription: "Scriptify is a modern web application that generates detailed, structured summaries from YouTube videos using cutting-edge AI technology. Built with a robust DevOps pipeline featuring Docker containerization and Kubernetes orchestration.",
-      tech: ["Docker", "Kubernetes","AWS", "Terraform"],
-      category: "DevOps",
-      color: "from-purple-600 to-pink-600",
-      githubUrl: "https://github.com/AyushChoudhary6/CareerVault.git",
-      liveUrl: "https://your-microservices-demo.com",
-      thumbnail: "/api/placeholder/800/600",
-      images: [
-        "/scimage1.png",
-        "/api/placeholder/800/600",
-        "/api/placeholder/800/600"
-      ],
-      features: [
-        "Docker: Container image building and development",
-        "Kubernetes: Production deployment and orchestration",
-        "Frontend: React + Vite + Nginx (containerized)",
-        "Backend: FastAPI + Python (containerized)",
-        "Ingress: Traffic routing and load balancing",
-        "HPA: Automatic scaling based on resource usage",
-        "Secrets: Secure API key management"
-      ]
-    }
+    // {
+    //   id: 3,
+    //   title: "Scriptify",
+    //   detailedDescription: "Scriptify is a modern web application that generates detailed, structured summaries from YouTube videos using cutting-edge AI technology. Built with a robust DevOps pipeline featuring Docker containerization and Kubernetes orchestration.",
+    //   tech: ["Docker", "Kubernetes","AWS", "Terraform"],
+    //   category: "DevOps",
+    //   color: "from-purple-600 to-pink-600",
+    //   githubUrl: "https://github.com/AyushChoudhary6/CareerVault.git",
+    //   liveUrl: "https://your-microservices-demo.com",
+    //   thumbnail: "/api/placeholder/800/600",
+    //   images: [
+    //     "/scimage1.png",
+    //     "/api/placeholder/800/600",
+    //     "/api/placeholder/800/600"
+    //   ],
+    //   features: [
+    //     "Docker: Container image building and development",
+    //     "Kubernetes: Production deployment and orchestration",
+    //     "Frontend: React + Vite + Nginx (containerized)",
+    //     "Backend: FastAPI + Python (containerized)",
+    //     "Ingress: Traffic routing and load balancing",
+    //     "HPA: Automatic scaling based on resource usage",
+    //     "Secrets: Secure API key management"
+    //   ]
+    // }
   ];
 
   const handleProjectExpand = useCallback((project, event) => {
