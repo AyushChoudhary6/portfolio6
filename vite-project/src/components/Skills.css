@@ -102,3 +102,32 @@
     padding: 0.4rem 0.8rem;
   }
 }
+
+/* Custom icon styling to remove white backgrounds */
+.skill-icon-no-bg {
+  background: transparent !important;
+  /* Remove white backgrounds using color filtering */
+  filter: brightness(0) saturate(100%) invert(47%) sepia(93%) saturate(1184%) hue-rotate(201deg) brightness(101%) contrast(102%);
+}
+
+.skill-icon-original {
+  background: transparent !important;
+  /* Alternative approach - make white pixels transparent */
+  mix-blend-mode: multiply;
+  filter: contrast(1.2) brightness(0.9);
+}
+
+.skill-icon-clean {
+  background: transparent !important;
+  /* Remove white backgrounds using advanced filtering */
+  filter: 
+    contrast(1.5) 
+    brightness(1.1) 
+    saturate(1.2)
+    drop-shadow(0 2px 8px rgba(59, 130, 246, 0.3));
+  /* Make white areas transparent */
+  mix-blend-mode: multiply;
+  /* Alternative: Use background removal */
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
