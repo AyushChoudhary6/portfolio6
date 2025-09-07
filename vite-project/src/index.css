@@ -12,3 +12,17 @@
     font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   }
 }
+
+/* Ultra-bold heading styles to match the image */
+@layer components {
+  .ultra-bold-heading {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: 900;
+    font-stretch: condensed;
+    letter-spacing: -0.1em;
+    line-height: 0.8;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

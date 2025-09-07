@@ -35,8 +35,8 @@ const Contact = () => {
           className="text-center mb-16"
           {...fadeInUp}
         >
-          <h2 className="text-5xl font-light text-white mb-16">
-            Contact
+          <h2 className="ultra-bold-heading text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] text-white mb-16">
+            CONTACT
           </h2>
         </motion.div>
 
