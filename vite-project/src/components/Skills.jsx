@@ -36,7 +36,9 @@ const Skills = () => {
     'PostgreSQL': SiPostgresql,
     'Terraform': SiTerraform,
     'Docker': FaDocker,
-    'Kubernetes': SiKubernetes
+    'Kubernetes': SiKubernetes,
+    'GitHub': FaGithub,
+    'Linux': SiLinux
   };
 
   // Brand colors for each technology
@@ -52,7 +54,9 @@ const Skills = () => {
     'PostgreSQL': 'group-hover:text-blue-600', // PostgreSQL blue
     'Terraform': 'group-hover:text-purple-500', // Terraform purple
     'Docker': 'group-hover:text-blue-500', // Docker blue
-    'Kubernetes': 'group-hover:text-blue-600' // Kubernetes blue
+    'Kubernetes': 'group-hover:text-blue-600', // Kubernetes blue
+    'GitHub': 'group-hover:text-gray-200', // GitHub light gray
+    'Linux': 'group-hover:text-yellow-400' // Linux yellow
   };
 
   const skillsData = [
@@ -118,6 +122,16 @@ const Skills = () => {
       name: 'Kubernetes', 
       icon: 'Kubernetes', 
       description: 'Open-source container orchestration platform for automating deployment, scaling, and management of containerized applications.' 
+    },
+    { 
+      name: 'GitHub', 
+      icon: 'GitHub', 
+      description: 'Web-based platform for version control using Git, facilitating collaborative software development and code sharing.' 
+    },
+    { 
+      name: 'Linux', 
+      icon: 'Linux', 
+      description: 'Open-source operating system kernel and family of Unix-like operating systems widely used in servers and development environments.' 
     }
   ];
 
