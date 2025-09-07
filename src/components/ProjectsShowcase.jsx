@@ -36,32 +36,32 @@ const Projects = () => {
   });
 
   const projects = [
-    // {
-    //   id: 1,
-    //   title: "Chat-app",
-    //   // description: "A real-time chat application built with React and Firebase.",
-    //   detailedDescription: "Built a production-ready fullstack chat application with a strong DevOps foundation — leveraging Docker for containerization, Jenkins pipelines for automated build/test/deployment, and Kubernetes for scalable orchestration. Infrastructure was provisioned using Terraform, secured with AWS IAM, and monitored through CloudWatch and Prometheus, ensuring a reliable, scalable, and secure deployment pipeline.",
-    //   tech: ["React", "Firebase", "Tailwind","AWS","Docker","Kubernetes","Terraform"],
-    //   category: "DevOps",
-    //   color: "from-blue-600 to-purple-600",
-    //   githubUrl: "https://github.com/AyushChoudhary6/full-stack_chatApp.git",
-    //   liveUrl: "https://full-stack-chat-app-xi.vercel.app/",
-    //   thumbnail: "/chat-app.png",
-    //   images: [
-    //     "/chat-app.png",
-    //     "/chat-app.png",
-    //     "/chat-app.png"
-    //   ],
-    //   features: [
-    //     "CI/CD Pipeline: Automated builds, testing, and deployments using Jenkins & GitHub Actions.",
-    //     "Containerization & Orchestration: Dockerized services and deployed on Kubernetes for scalability.",
-    //     "Infrastructure as Code: Provisioned cloud resources with Terraform, ensuring reproducible environments.",
-    //     "Cloud & Monitoring: Deployed on AWS with CloudWatch & Prometheus for performance monitoring.",
-    //     "Security: Enforced role-based access via AWS IAM and implemented best practices in secrets management"
-    //   ]
-    // },
     {
       id: 1,
+      title: "Chat-app",
+      // description: "A real-time chat application built with React and Firebase.",
+      detailedDescription: "Built a production-ready fullstack chat application with a strong DevOps foundation — leveraging Docker for containerization, Jenkins pipelines for automated build/test/deployment, and Kubernetes for scalable orchestration. Infrastructure was provisioned using Terraform, secured with AWS IAM, and monitored through CloudWatch and Prometheus, ensuring a reliable, scalable, and secure deployment pipeline.",
+      tech: ["React", "Firebase", "Tailwind","AWS","Docker","Kubernetes","Terraform"],
+      category: "DevOps",
+      color: "from-blue-600 to-purple-600",
+      githubUrl: "https://github.com/AyushChoudhary6/full-stack_chatApp.git",
+      liveUrl: "https://full-stack-chat-app-xi.vercel.app/",
+      thumbnail: "/chat-app.png",
+      images: [
+        "/chat-app.png",
+        "/chat-app.png",
+        "/chat-app.png"
+      ],
+      features: [
+        "CI/CD Pipeline: Automated builds, testing, and deployments using Jenkins & GitHub Actions.",
+        "Containerization & Orchestration: Dockerized services and deployed on Kubernetes for scalability.",
+        "Infrastructure as Code: Provisioned cloud resources with Terraform, ensuring reproducible environments.",
+        "Cloud & Monitoring: Deployed on AWS with CloudWatch & Prometheus for performance monitoring.",
+        "Security: Enforced role-based access via AWS IAM and implemented best practices in secrets management"
+      ]
+    },
+    {
+      id: 2,
       title: "Code Veda",
       detailedDescription: "Collaborated in a team to design and develop Code Veda, a hackathon website featuring a ancient & modern, responsive UI and seamless user experience. Focused on frontend development using React, TailwindCSS, and component-driven design to deliver an engaging platform within strict hackathon timelines.",
       category: "Frontend",
@@ -84,7 +84,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 2,
+      id: 3,
       title: "Retail Store App",
       detailedDescription: "The Retail Store Sample App demonstrates a modern microservices architecture deployed on AWS EKS using GitOps principles. The application consists of multiple services that work together to provide a complete retail store experience",
       tech: ["Java", "Go", "Terraform", "AWS", "Argo CD","Helm"],
