@@ -99,7 +99,7 @@ const About = () => {
       style={{ fontFamily: 'Inter, sans-serif' }}
     >
       Alongside DevOps, I build frontend applications using <span className="font-semibold text-white">React, Vite, and modern JavaScript frameworks</span>, 
-      giving me a full-stack perspective that helps bridge development and operations and deliver end-to-end solutions.
+      giving me a perspective that helps bridge development and operations and deliver end-to-end solutions.
     </motion.p>
 
     <motion.p 

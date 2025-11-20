@@ -1,73 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
-  // EmailJS configuration from environment variables
-  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
-    
-    // Check if environment variables are loaded
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      console.error('EmailJS configuration missing');
-      setSubmitStatus('error');
-      setIsSubmitting(false);
-      return;
-    }
-    
-    try {
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Ayush Choudhary', // Your name
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-
-      console.log('Email sent successfully:', result);
-      setFormData({ name: '', email: '', message: '' });
-      setSubmitStatus('success');
-      
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
-  };
 
   return (
     <section id="contact" className="min-h-screen bg-white py-12 flex items-center">
@@ -132,10 +67,10 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+                <div className="grid lg:grid-cols-1 gap-12 items-start max-w-4xl mx-auto">
                   {/* Contact Information */}
                   <div className="space-y-8">
-                    <div className="text-center lg:text-left">
+                    <div className="text-center">
                       <h3 className="text-2xl text-white mb-8 font-semibold">
                         Get In Touch
                       </h3>
@@ -144,7 +79,7 @@ const Contact = () => {
                       <div className="space-y-6">
                         <motion.a 
                           href="mailto:ayushrjchoudhary2005@gmail.com" 
-                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
+                          className="flex items-center justify-center gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
@@ -156,7 +91,7 @@ const Contact = () => {
                           href="https://www.linkedin.com/in/ayush-choudhary-29aa01325/" 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
+                          className="flex items-center justify-center gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
@@ -168,7 +103,7 @@ const Contact = () => {
                           href="https://github.com/AyushChoudhary6" 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center lg:justify-start gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
+                          className="flex items-center justify-center gap-4 text-gray-300 hover:text-white transition-colors text-lg group"
                           whileHover={{ x: 10 }}
                           transition={{ duration: 0.3 }}
                         >
@@ -177,78 +112,6 @@ const Contact = () => {
                         </motion.a>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Contact Form */}
-                  <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-8">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                          placeholder="Your Name"
-                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors text-lg"
-                        />
-                      </div>
-
-                      <div>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          placeholder="Your Email"
-                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors text-lg"
-                        />
-                      </div>
-
-                      <div>
-                        <textarea
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          required
-                          rows={4}
-                          placeholder="Your Message"
-                          className="w-full px-0 py-4 bg-transparent border-0 border-b border-gray-600 text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors resize-none text-lg"
-                        ></textarea>
-                      </div>
-
-                      <motion.button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full mt-8 px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-lg font-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                        whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-                      >
-                        {isSubmitting ? 'Sending...' : 'Send Message'}
-                      </motion.button>
-
-                      {/* Status Message */}
-                      {submitStatus && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className={`text-center mt-4 ${
-                            submitStatus === 'success' 
-                              ? 'text-green-400' 
-                              : 'text-red-400'
-                          }`}
-                        >
-                          {submitStatus === 'success' 
-                            ? 'Thank you for your message! I\'ll get back to you soon.' 
-                            : 'Failed to send message. Please try again or contact me directly.'
-                          }
-                        </motion.div>
-                      )}
-                    </form>
                   </div>
                 </div>
               </motion.div>
