@@ -38,17 +38,26 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Chat-app",
+      title: "BioMarine AI",
       // description: "A real-time chat application built with React and Firebase.",
-      detailedDescription: "Built a production-ready fullstack chat application with a strong DevOps foundation — leveraging Docker for containerization, Jenkins pipelines for automated build/test/deployment, and Kubernetes for scalable orchestration. Infrastructure was provisioned using Terraform, secured with AWS IAM, and monitored through CloudWatch and Prometheus, ensuring a reliable, scalable, and secure deployment pipeline.",
-      tech: ["React", "Firebase", "Tailwind","AWS","Docker","Kubernetes","Terraform"],
+      detailedDescription:     "Designed and deployed a production-grade cloud-native AI platform for marine species classification. The system uses Docker-containerized microservices orchestrated on AWS EKS, with infrastructure fully automated using Terraform. Implemented a complete GitOps workflow using GitHub Actions for CI and ArgoCD for CD, enabling automated rollouts, version control of Kubernetes manifests, and self-healing deployments. Integrated TensorFlow.js for on-device classification, DynamoDB for scalable data storage, secured IAM/OIDC access, and CloudWatch + Prometheus for observability.",
+      tech: [ "React",
+    "Node.js",
+    "TensorFlow.js",
+    "AWS",
+    "EKS",
+    "Docker",
+    "Terraform",
+    "GitHub Actions",
+    "ArgoCD",
+    "DynamoDB"],
       category: "DevOps",
       color: "from-blue-600 to-purple-600",
-      githubUrl: "https://github.com/AyushChoudhary6/full-stack_chatApp.git",
-      liveUrl: "https://full-stack-chat-app-xi.vercel.app/",
-      thumbnail: "/chat-app.png",
+      githubUrl: "https://github.com/AyushChoudhary6/biomarine-ai.git",
+      liveUrl: "https://biomarineai.vercel.app/",
+      thumbnail: "/bm.png",
       images: [
-        "/chat-app.png",
+        "/.png",
         // "/chat-app.png",
         // "/chat-app.png"
       ],
@@ -84,28 +93,74 @@ const Projects = () => {
       ]
     },
     {
-      id: 3,
-      title: "Retail Store App",
-      detailedDescription: "The Retail Store Sample App demonstrates a modern microservices architecture deployed on AWS EKS using GitOps principles. The application consists of multiple services that work together to provide a complete retail store experience",
-      tech: ["Java", "Go", "Terraform", "AWS", "Argo CD","Helm"],
-      category: "DevOps",
-      color: "from-orange-600 to-red-600",
-      githubUrl: "https://github.com/AyushChoudhary6/retail-store-sample-app.git",
-      liveUrl: "http://k8s-ingressn-ingressn-458fe101d6-c35438a11e41fed0.elb.us-west-2.amazonaws.com/",
-      thumbnail: "/retailstoreappThumbnail.png",
-      images: [
-        "/retailchart.png",
-        "/retailimage2.png",
-        "/retailimage3.png"
-      ],
-      features: [
-        "Microservices: Each component is developed and deployed independently",
-        "Containerization: All services run as containers on Kubernetes",
-        "GitOps: Infrastructure and application deployment managed through Git",
-        "Infrastructure as Code: All AWS resources defined using Terraform",
-        "CI/CD: Automated build and deployment pipelines with GitHub Actions"
-      ]
-    }
+  id: 3,
+  title: "CareerVault",
+  detailedDescription:
+    "Built a cloud-native job application tracking system using AWS Cognito, DynamoDB, ALB, ASG, EC2, CloudWatch, and S3. Designed a production-ready infrastructure using Terraform for VPC, subnets, load balancing, autoscaling, IAM roles, and DynamoDB tables. Developed an AI-powered resume analysis engine using Google Gemini integrated with FastAPI, enabling intelligent job-fit insights and automated resume evaluation.",
+  tech: [
+    "Python",
+    "JavaScript",
+    "FastAPI",
+    "React",
+    "Tailwind CSS",
+    "Terraform",
+    "AWS",
+    "Docker"
+  ],
+  category: "DevOps",
+  color: "from-orange-600 to-red-600",
+  githubUrl: "https://github.com/AyushChoudhary6/CareerVault.git",
+  liveUrl: "https://careervault-ten.vercel.app/",
+  thumbnail: "/careervault.png",
+  images: [
+    // "/careervault1.png",
+    // "/careervault2.png",
+    // "/careervault3.png"
+  ],
+  features: [
+    "Serverless and cloud-native architecture using AWS managed services",
+    "Secure authentication with AWS Cognito (MFA, JWT, password policies)",
+    "Fully automated infrastructure using Terraform (IaC)",
+    "Dockerized backend with FastAPI for scalable deployment",
+    "AI-powered resume analysis using Google Gemini",
+    "Autoscaling backend using EC2 + ASG + ALB",
+    "Centralized monitoring and logs via CloudWatch"
+  ]
+},
+{
+  id: 4,
+  title: "GreedyMap",
+  detailedDescription:
+    "Developed an interactive technology visualization platform allowing users to explore, compare, and analyze modern tech stacks. Implemented dynamic data visualizations using D3.js, React Flow, and Chart.js to display relationships, trends, and adoption metrics. Built a responsive and engaging UI with React, Tailwind CSS, and Framer Motion, achieving a smooth user experience and a 95+ Lighthouse performance score on Vercel deployment.",
+  tech: [
+    "React",
+    "Tailwind CSS",
+    "D3.js",
+    "React Flow",
+    "Framer Motion",
+    "Vite"
+  ],
+  category: "Frontend",
+  color: "from-green-600 to-emerald-600",
+  githubUrl: "https://github.com/AyushChoudhary6/GreedyMap",
+  liveUrl: "https://greedymap.vercel.app/",
+  thumbnail: "/greedymap.png",
+  images: [
+    // "/greedymap1.png",
+    // "/greedymap2.png",
+    // "/greedymap3.png"
+  ],
+  features: [
+    "Interactive tech stack visualizations powered by D3.js",
+    "Platform-wise comparison of frameworks, tools, and libraries",
+    "Trend analysis with real-time data structures",
+    "Smooth UI animations using Framer Motion",
+    "Fully responsive layout built with Tailwind CSS",
+    "High-performance Vite bundling for fast load times"
+  ]
+}
+
+
     // {
     //   id: 3,
     //   title: "Scriptify",

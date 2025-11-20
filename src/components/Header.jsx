@@ -34,8 +34,8 @@ const Header = () => {
     setIsMobileMenuOpen(false);
     // Create a temporary link to download the resume
     const link = document.createElement('a');
-    link.href = '/ayush choudhary resume.pdf';
-    link.download = 'Ayush_Choudhary_Resume.pdf';
+    link.href = '/cv.pdf';
+    link.download = 'Ayush_Choudhary_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
